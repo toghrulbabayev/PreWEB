@@ -1,16 +1,24 @@
-# EvUsta MVP
+# EvUsta MVP (working auth + booking demo)
 
-Preply/Bolt tipli ev xidməti marketplace üçün sadə frontend prototipi.
+Bu layihə static frontend MVP-dir və aşağıdakı axınlar **işləyir**:
+- Register
+- Sign in / Sign out
+- Provider profil yaratmaq və yeniləmək
+- Customer olaraq bron etmək
+- "Tamamlandı + Rate et" ilə reytinq yazmaq
+- Filtrləmə (xidmət növü + qiymət)
 
-## Nələr var?
-- Ev təmizliyi və yemək bişirmə üzrə işçi siyahısı
-- Filtrləmə (xidmət növü + maksimum saatlıq qiymət)
-- Bron etmə axını
-- Xidmətdən sonra reytinq/rəy göndərilməsi
-- Reytinqin yenilənməsi
+## Necə işə salım?
+1. Terminalda layihə qovluğuna keçin.
+2. Serveri açın:
+   ```bash
+   python3 -m http.server 4173
+   ```
+3. Brauzerdə açın:
+   - `http://localhost:4173`
 
-## İşə salmaq
-```bash
-python3 -m http.server 4173
-```
-Sonra brauzerdə `http://localhost:4173` açın.
+## Demo hesablar
+- Customer: `customer@demo.az` / `1234`
+- Provider: `aysel@demo.az` / `1234`
+
+Qeyd: məlumatlar localStorage-da saxlanılır. Sıfırlamaq üçün browser storage təmizləyin.

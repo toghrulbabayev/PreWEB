@@ -3,26 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EvUsta — Ev üçün xadimə və aşpaz platforması</title>
+    <title>EvUsta — Tam işlək MVP</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="hero">
       <nav>
-        <h1>EvUsta</h1>
-        <button class="pill">Komissiya: 12%</button>
+        <div>
+          <h1>EvUsta</h1>
+          <small>Ev üçün xadimə və aşpaz bron platforması</small>
+        </div>
+        <div class="auth-actions">
+          <button id="openSignInBtn">Sign in</button>
+          <button id="openRegisterBtn" class="primary">Register</button>
+          <button id="signOutBtn" class="danger hidden">Sign out</button>
+        </div>
       </nav>
       <div class="hero-content">
-        <h2>Preply/Bolt formatında etibarlı ev xidməti platforması</h2>
+        <h2>Preply/Bolt kimi: seç, bron et, xidmət al, rate et</h2>
         <p>
-          İstifadəçi uyğun işçini seçir, bron edir, xidmət tamamlanır və daha sonra
-          reytinq verir. Qiyməti işçi özü təyin edir, platforma isə komissiya tutur.
+          İşçi qiyməti özü təyin edir, müştəri bron edir və xidmətdən sonra reytinq verir.
+          Platforma hər sifarişdən komissiya götürür.
         </p>
+        <p id="sessionInfo" class="session-info">Hal-hazırda guest olaraq baxırsınız.</p>
       </div>
     </header>
 
     <main>
-      <section class="controls card">
+      <section class="card controls">
         <label>
           Xidmət növü
           <select id="serviceFilter">
@@ -34,51 +42,121 @@
         </label>
         <label>
           Maksimum qiymət (AZN/saat)
-          <input id="priceFilter" type="range" min="10" max="60" value="60" />
-          <span id="priceValue">60 AZN</span>
+          <input id="priceFilter" type="range" min="10" max="80" value="80" />
+          <span id="priceValue">80 AZN</span>
         </label>
       </section>
 
       <section>
-        <h3>Ustalar</h3>
+        <h3>İşçi siyahısı</h3>
         <div id="workerList" class="grid"></div>
       </section>
 
-      <section class="card how-it-works">
-        <h3>İş prinsipi</h3>
-        <ol>
-          <li>Profilə bax və bron et.</li>
-          <li>İşçi ünvanına gəlir və xidməti tamamlayır.</li>
-          <li>Xidmətdən sonra reytinq və rəy yaz.</li>
-          <li>Platforma hər sifarişdən komissiya götürür.</li>
-        </ol>
+      <section id="providerPanel" class="card hidden">
+        <h3>Provider paneli</h3>
+        <p>Öz profilini yarat və qiymətini özün təyin et.</p>
+        <form id="providerForm" class="stack">
+          <label>
+            Görünən ad
+            <input id="providerName" required />
+          </label>
+          <label>
+            Xidmət növü
+            <select id="providerService" required>
+              <option value="cleaning">Ev təmizliyi</option>
+              <option value="cooking">Yemək bişirmə</option>
+              <option value="both">Hər ikisi</option>
+            </select>
+          </label>
+          <label>
+            Qiymət (AZN/saat)
+            <input id="providerPrice" type="number" min="10" max="200" required />
+          </label>
+          <label>
+            Bio
+            <textarea id="providerBio" rows="3" required></textarea>
+          </label>
+          <button class="primary" type="submit">Profili yarat / yenilə</button>
+        </form>
+      </section>
+
+      <section id="bookingsSection" class="card hidden">
+        <h3>Mənim bronlarım</h3>
+        <div id="bookingsList" class="stack"></div>
       </section>
     </main>
 
-    <dialog id="bookingModal">
-      <form method="dialog" id="bookingForm">
-        <h4 id="modalTitle"></h4>
+    <dialog id="registerModal">
+      <form id="registerForm" method="dialog" class="stack">
+        <h4>Register</h4>
         <label>
-          Tarix
-          <input type="date" id="bookingDate" required />
+          Ad
+          <input id="registerName" required />
         </label>
         <label>
-          Saat
-          <input type="time" id="bookingTime" required />
+          Email
+          <input id="registerEmail" type="email" required />
+        </label>
+        <label>
+          Şifrə
+          <input id="registerPassword" type="password" minlength="4" required />
+        </label>
+        <label>
+          Rol
+          <select id="registerRole" required>
+            <option value="customer">Customer</option>
+            <option value="provider">Provider</option>
+          </select>
         </label>
         <menu>
           <button value="cancel">Ləğv et</button>
-          <button id="confirmBooking" value="default">Bron et</button>
+          <button class="primary" type="submit">Qeydiyyatdan keç</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="signInModal">
+      <form id="signInForm" method="dialog" class="stack">
+        <h4>Sign in</h4>
+        <label>
+          Email
+          <input id="signInEmail" type="email" required />
+        </label>
+        <label>
+          Şifrə
+          <input id="signInPassword" type="password" required />
+        </label>
+        <menu>
+          <button value="cancel">Ləğv et</button>
+          <button class="primary" type="submit">Daxil ol</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="bookingModal">
+      <form id="bookingForm" method="dialog" class="stack">
+        <h4 id="bookingTitle"></h4>
+        <label>
+          Tarix
+          <input id="bookingDate" type="date" required />
+        </label>
+        <label>
+          Saat
+          <input id="bookingTime" type="time" required />
+        </label>
+        <menu>
+          <button value="cancel">Ləğv et</button>
+          <button class="primary" type="submit">Bron et</button>
         </menu>
       </form>
     </dialog>
 
     <dialog id="ratingModal">
-      <form method="dialog" id="ratingForm">
+      <form id="ratingForm" method="dialog" class="stack">
         <h4 id="ratingTitle">Reytinq ver</h4>
         <label>
           Ulduz sayı (1-5)
-          <input type="number" id="ratingValue" min="1" max="5" required />
+          <input id="ratingValue" type="number" min="1" max="5" required />
         </label>
         <label>
           Rəy
@@ -86,7 +164,7 @@
         </label>
         <menu>
           <button value="cancel">Bağla</button>
-          <button id="submitRating" value="default">Göndər</button>
+          <button class="primary" type="submit">Göndər</button>
         </menu>
       </form>
     </dialog>

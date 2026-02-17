@@ -1,11 +1,11 @@
 :root {
-  color-scheme: light;
-  --bg: #f6f8fc;
+  --bg: #f5f7fc;
   --card: #ffffff;
-  --primary: #2a67f5;
   --text: #1e2430;
-  --muted: #5f6b7a;
-  --success: #0f9d58;
+  --muted: #667289;
+  --primary: #2b66f6;
+  --danger: #d13232;
+  --success: #149f5b;
 }
 
 * {
@@ -15,22 +15,48 @@
 
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--text);
+  background: var(--bg);
 }
 
 .hero {
-  background: linear-gradient(120deg, #0d1b40, #2a67f5);
-  color: #fff;
-  padding: 2rem 1.5rem 3rem;
+  background: linear-gradient(120deg, #0f1f47, #2b66f6);
+  color: white;
+  padding: 2rem 1rem 3rem;
+}
+
+nav,
+.hero-content,
+main {
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  max-width: 1000px;
-  margin: 0 auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-content {
+  margin-top: 1.6rem;
+}
+
+.hero-content p {
+  color: #d9e3ff;
+  max-width: 760px;
+}
+
+.session-info {
+  font-weight: 600;
+}
+
+main {
+  margin-top: -1.25rem;
+  padding: 0 1rem 2rem;
+  display: grid;
+  gap: 1rem;
 }
 
 h1,
@@ -40,92 +66,47 @@ h4 {
   margin: 0;
 }
 
-.hero-content {
-  max-width: 1000px;
-  margin: 2rem auto 0;
-}
-
-.hero-content p {
-  max-width: 720px;
-  color: #d8e2ff;
-}
-
-main {
-  max-width: 1000px;
-  margin: -1.5rem auto 2rem;
-  padding: 0 1rem;
-  display: grid;
-  gap: 1rem;
-}
-
 .card {
   background: var(--card);
   border-radius: 14px;
   padding: 1rem;
-  box-shadow: 0 8px 24px rgba(18, 26, 50, 0.08);
+  box-shadow: 0 8px 24px rgba(14, 27, 55, 0.08);
 }
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-}
-
-label {
-  display: grid;
-  gap: 0.45rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-select,
-input,
-textarea,
-button {
-  border: 1px solid #d8dde6;
-  border-radius: 10px;
-  padding: 0.6rem 0.7rem;
-  font-size: 0.95rem;
-}
-
-button {
-  cursor: pointer;
-  background: #fff;
-}
-
-.pill {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 0.9rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .worker-card {
   background: var(--card);
   border-radius: 14px;
   padding: 1rem;
-  box-shadow: 0 8px 20px rgba(18, 26, 50, 0.06);
+  box-shadow: 0 8px 20px rgba(14, 27, 55, 0.08);
   display: grid;
   gap: 0.5rem;
 }
 
-.worker-head {
+.row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .badge {
-  background: #e9f0ff;
-  color: #2a67f5;
-  border-radius: 20px;
-  padding: 0.2rem 0.55rem;
   font-size: 0.8rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  background: #ebf1ff;
+  color: var(--primary);
 }
 
 .price {
@@ -133,37 +114,72 @@ button {
   font-weight: 700;
 }
 
-.worker-card button {
+.stack {
+  display: grid;
+  gap: 0.7rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+input,
+select,
+textarea,
+button {
+  border: 1px solid #d8dfec;
+  border-radius: 10px;
+  padding: 0.62rem 0.72rem;
+  font-size: 0.95rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.primary {
   background: var(--primary);
   color: #fff;
   border: none;
 }
 
-.worker-card small {
-  color: var(--muted);
+.danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
 }
 
-.how-it-works ol {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
+.auth-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.small-text {
   color: var(--muted);
+  font-size: 0.9rem;
 }
 
 menu {
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
+  margin: 0.5rem 0 0;
   padding: 0;
-  margin: 1rem 0 0;
+  gap: 0.5rem;
 }
 
 dialog {
   border: none;
   border-radius: 14px;
-  max-width: 420px;
-  width: calc(100% - 1.5rem);
+  width: min(420px, calc(100% - 1rem));
 }
 
 dialog::backdrop {
-  background: rgba(10, 15, 35, 0.4);
+  background: rgba(10, 18, 40, 0.44);
+}
+
+.hidden {
+  display: none !important;
 }
