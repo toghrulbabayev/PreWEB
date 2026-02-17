@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvUsta — Ev üçün xadimə və aşpaz platforması</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav>
+        <h1>EvUsta</h1>
+        <button class="pill">Komissiya: 12%</button>
+      </nav>
+      <div class="hero-content">
+        <h2>Preply/Bolt formatında etibarlı ev xidməti platforması</h2>
+        <p>
+          İstifadəçi uyğun işçini seçir, bron edir, xidmət tamamlanır və daha sonra
+          reytinq verir. Qiyməti işçi özü təyin edir, platforma isə komissiya tutur.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="controls card">
+        <label>
+          Xidmət növü
+          <select id="serviceFilter">
+            <option value="all">Hamısı</option>
+            <option value="cleaning">Ev təmizliyi</option>
+            <option value="cooking">Yemək bişirmə</option>
+            <option value="both">Hər ikisi</option>
+          </select>
+        </label>
+        <label>
+          Maksimum qiymət (AZN/saat)
+          <input id="priceFilter" type="range" min="10" max="60" value="60" />
+          <span id="priceValue">60 AZN</span>
+        </label>
+      </section>
+
+      <section>
+        <h3>Ustalar</h3>
+        <div id="workerList" class="grid"></div>
+      </section>
+
+      <section class="card how-it-works">
+        <h3>İş prinsipi</h3>
+        <ol>
+          <li>Profilə bax və bron et.</li>
+          <li>İşçi ünvanına gəlir və xidməti tamamlayır.</li>
+          <li>Xidmətdən sonra reytinq və rəy yaz.</li>
+          <li>Platforma hər sifarişdən komissiya götürür.</li>
+        </ol>
+      </section>
+    </main>
+
+    <dialog id="bookingModal">
+      <form method="dialog" id="bookingForm">
+        <h4 id="modalTitle"></h4>
+        <label>
+          Tarix
+          <input type="date" id="bookingDate" required />
+        </label>
+        <label>
+          Saat
+          <input type="time" id="bookingTime" required />
+        </label>
+        <menu>
+          <button value="cancel">Ləğv et</button>
+          <button id="confirmBooking" value="default">Bron et</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="ratingModal">
+      <form method="dialog" id="ratingForm">
+        <h4 id="ratingTitle">Reytinq ver</h4>
+        <label>
+          Ulduz sayı (1-5)
+          <input type="number" id="ratingValue" min="1" max="5" required />
+        </label>
+        <label>
+          Rəy
+          <textarea id="ratingComment" rows="3" required></textarea>
+        </label>
+        <menu>
+          <button value="cancel">Bağla</button>
+          <button id="submitRating" value="default">Göndər</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
