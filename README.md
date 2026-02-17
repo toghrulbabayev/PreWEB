@@ -1,21 +1,22 @@
-# EvUsta MVP (working auth + booking demo)
+# EvUsta MVP (clean modular frontend)
 
-Bu layihə static frontend MVP-dir və aşağıdakı axınlar **işləyir**:
-- Register
-- Sign in / Sign out
-- Provider profil yaratmaq və yeniləmək
-- Customer olaraq bron etmək
-- "Tamamlandı + Rate et" ilə reytinq yazmaq
-- Filtrləmə (xidmət növü + qiymət)
+Bu versiyada `app.js` təmizlənib və kod hissələrə bölünüb:
 
-## Necə işə salım?
+- `js/config/` → sabitlər
+- `js/state/` → storage/store
+- `js/services/` → auth, worker, booking logic
+- `js/ui/` → DOM və render
+- `js/controllers/` → event orchestration
+- `app.js` → yalnız entry point
+
+## Necə işə salım? (localhost:3000)
 1. Terminalda layihə qovluğuna keçin.
 2. Serveri açın:
    ```bash
-   python3 -m http.server 4173
+   python3 -m http.server 3000
    ```
 3. Brauzerdə açın:
-   - `http://localhost:4173`
+   - `http://localhost:3000`
 
 ## Demo hesablar
 - Customer: `customer@demo.az` / `1234`
