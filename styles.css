@@ -1,0 +1,185 @@
+:root {
+  --bg: #f5f7fc;
+  --card: #ffffff;
+  --text: #1e2430;
+  --muted: #667289;
+  --primary: #2b66f6;
+  --danger: #d13232;
+  --success: #149f5b;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.hero {
+  background: linear-gradient(120deg, #0f1f47, #2b66f6);
+  color: white;
+  padding: 2rem 1rem 3rem;
+}
+
+nav,
+.hero-content,
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-content {
+  margin-top: 1.6rem;
+}
+
+.hero-content p {
+  color: #d9e3ff;
+  max-width: 760px;
+}
+
+.session-info {
+  font-weight: 600;
+}
+
+main {
+  margin-top: -1.25rem;
+  padding: 0 1rem 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(14, 27, 55, 0.08);
+}
+
+.controls {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.worker-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgba(14, 27, 55, 0.08);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge {
+  font-size: 0.8rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  background: #ebf1ff;
+  color: var(--primary);
+}
+
+.price {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.stack {
+  display: grid;
+  gap: 0.7rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+input,
+select,
+textarea,
+button {
+  border: 1px solid #d8dfec;
+  border-radius: 10px;
+  padding: 0.62rem 0.72rem;
+  font-size: 0.95rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+
+.danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.small-text {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+menu {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+dialog {
+  border: none;
+  border-radius: 14px;
+  width: min(420px, calc(100% - 1rem));
+}
+
+dialog::backdrop {
+  background: rgba(10, 18, 40, 0.44);
+}
+
+.hidden {
+  display: none !important;
+}
